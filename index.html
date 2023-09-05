@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .chat-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 400px;
+            height: 500px;
+            margin: 50px auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chat-header {
+            background-color: #3F51B5;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .chat-history {
+            overflow-y: scroll;
+            padding: 10px;
+        }
+
+        .chat-input {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        #message-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #send-btn {
+            background-color: #3F51B5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Chat App</h2>
+        </div>
+        <div class="chat-history">
+            <ul id="message-list"></ul>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+    <script>
+        const messageList = document.getElementById('message-list');
+        const messageInput = document.getElementById('message-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        sendBtn.addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            const message = messageInput.value;
+            if (message !== '') {
+                const li = document.createElement('li');
+                li.textContent = message;
+                messageList.appendChild(li);
+                messageInput.value = '';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
